@@ -7,7 +7,10 @@ declare module "styled-components" {
     colors: {
       title: string;
       white: string;
-      button: string;
+      button: {
+        default: string;
+        hover: string;
+      };
     };
     font: {
       family: {

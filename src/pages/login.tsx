@@ -1,8 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "Yup";
+import { useRouter } from "next/router";
 
-import { Box, ImageBox } from "../styles/pages/styles-login";
+import { Box, ImageBox } from "../styles/components/styles-box";
+
 import {
   Button,
   Form,
@@ -12,25 +14,25 @@ import {
   ErrorInput,
   LinkForm,
   P,
+  InputBackground,
+  Icon,
 } from "../styles/components/styles-form";
 
-export default function Home() {
+export default function Login() {
+  const router = useRouter();
   return (
     <Box>
       <ImageBox>
         <img src="/logo-rstcom.png" alt="" width="100%" />
       </ImageBox>
       <Formik
-        initialValues={{ name: "", email: "" }}
+        initialValues={{ name: "", password: "" }}
         validationSchema={Yup.object({
           name: Yup.string().required("Required"),
-          email: Yup.string().email("Email invalido").required("Required"),
+          password: Yup.string().min(6).required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            console.log(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          router.push("/");
         }}
       >
         {(formik) => {
@@ -40,32 +42,42 @@ export default function Home() {
                 <h1>Faça seu login</h1>
                 <Label htmlFor="name">
                   Name
-                  <Input
-                    type="text"
-                    id="name"
-                    autoComplete="name"
-                    {...formik.getFieldProps("name")}
-                  />
+                  <InputBackground>
+                    <Input
+                      type="text"
+                      id="name"
+                      autoComplete="name"
+                      {...formik.getFieldProps("name")}
+                    />
+                  </InputBackground>
                   <ErrorInput>
                     {formik.touched.name && <p>{formik.errors.name}</p>}
                   </ErrorInput>
                 </Label>
                 <Label htmlFor="email">
-                  Email
-                  <Input
-                    id="email"
-                    type="text"
-                    autoComplete="email"
-                    {...formik.getFieldProps("email")}
-                  />
+                  Senha
+                  <InputBackground>
+                    <Input
+                      id="email"
+                      type="password"
+                      autoComplete="password"
+                      {...formik.getFieldProps("password")}
+                    />
+                    <Icon
+                      src="/icons/eye-on.svg"
+                      alt="show password"
+                      height="24px"
+                      width="24px"
+                    />
+                  </InputBackground>
                   <ErrorInput>
-                    {formik.touched.email && <p>{formik.errors.email}</p>}
+                    {formik.touched.password && <p>{formik.errors.password}</p>}
                   </ErrorInput>
                 </Label>
                 <Button type="submit">Enviar</Button>
                 <P>
                   Não tem uma conta?
-                  <LinkForm href="/">Crie uma!</LinkForm>
+                  <LinkForm href="/register">Crie uma!</LinkForm>
                 </P>
               </WrapperForm>
             </Form>
