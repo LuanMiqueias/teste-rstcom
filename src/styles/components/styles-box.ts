@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Box = styled.div`
-  background: url("/bg.png") no-repeat center center / cover;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;

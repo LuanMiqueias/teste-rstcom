@@ -127,7 +127,7 @@ export default function Register() {
                 <Button type="submit">Enviar</Button>
                 <P>
                   Já tem uma conta?
-                  <LinkForm href="/login">Faça login!</LinkForm>
+                  <LinkForm href="/">Faça login!</LinkForm>
                 </P>
               </WrapperForm>
             </Form>

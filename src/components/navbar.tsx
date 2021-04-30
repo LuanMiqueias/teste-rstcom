@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import UserAuth from "../auth/UserAuth";
+import { UserContext } from "../context/UserContext";
 import {
   Box,
   LogoToHome,
@@ -14,10 +14,11 @@ import {
 } from "../styles/components/styles-navbar";
 
 export const NavBar = () => {
-  const { user } = UserAuth({ redirectIfFound: "", redirectTo: "" });
+  const { data, isAuth, logout } = React.useContext(UserContext);
+
   const router = useRouter();
 
-  if (!user) return null;
+  if (!isAuth) return <></>;
   return (
     <Box>
       <Header>
@@ -31,10 +32,10 @@ export const NavBar = () => {
             />
           </LogoToHome>
         </Link>
-        <Logout>Sair</Logout>
+        <Logout onClick={() => logout()}>Sair</Logout>
         <InfoUser>
-          <h2>{user.name}</h2>
-          <h3>{user?.email || "email@dominior.com.br"}</h3>
+          <h2>{data.name}</h2>
+          <h3>{data?.email || "email@dominior.com.br"}</h3>
         </InfoUser>
       </Header>
       <Nav>
@@ -43,8 +44,8 @@ export const NavBar = () => {
             Dados Pessoais
           </LinkNav>
         </Link>
-        <Link href="/">
-          <LinkNav isActive={router.asPath === "/"}>Todo List</LinkNav>
+        <Link href="/todo-list">
+          <LinkNav isActive={router.asPath === "/todo-list"}>Todo List</LinkNav>
         </Link>
       </Nav>
     </Box>

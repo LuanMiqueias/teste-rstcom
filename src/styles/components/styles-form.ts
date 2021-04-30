@@ -5,7 +5,7 @@ import styled, { css, keyframes } from "styled-components";
 
 export const ContainerForm = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   align-items: flex-start;
   justify-content: flex-start;
   ${({ theme }) => css`
@@ -17,7 +17,7 @@ export const Form = styled.form`
     background-color: ${theme.colors.white};
     width: 100%;
     max-width: 500px;
-    height: 100%;
+    min-height: 100vh;
     padding: 1rem 2.75rem;
     display: flex;
     align-items: center;

@@ -2,9 +2,10 @@ import Head from "next/head";
 import React from "react";
 
 import { ThemeProvider } from "styled-components";
-import UserAuth from "../auth/UserAuth";
 import { NavBar } from "../components/navbar";
-import { GlobalStyles } from "../styles/global-styles";
+import { TodoListProvider } from "../context/TodoListContext";
+import { UserProvider } from "../context/UserContext";
+import { GlobalStyles, Container } from "../styles/global-styles";
 import { theme } from "../styles/theme";
 
 function MyApp({ Component, pageProps }) {
@@ -13,11 +14,18 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <UserProvider>
+        <TodoListProvider>
+          <Container>
+            <NavBar />
+            <Component {...pageProps} />
+          </Container>
+        </TodoListProvider>
+      </UserProvider>
       <GlobalStyles />
     </ThemeProvider>
   );

@@ -1,27 +1,29 @@
 import React from "react";
+import { TodoListContext } from "../context/TodoListContext";
+import { Form } from "../styles/components/styles-todoList";
 
-interface IPropsTask {
-  addValue: (name: string, completed: boolean) => void;
-}
-
-export const AddTask = ({ addValue }: IPropsTask) => {
+export const AddTask = () => {
   const [nameTask, setNameTask] = React.useState("");
+  const { createTask } = React.useContext(TodoListContext);
 
   function handleAddTask(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    addValue(nameTask, false);
-    setNameTask("");
+    if (nameTask.trim() !== "") {
+      createTask(nameTask);
+      setNameTask("");
+    }
   }
   return (
-    <form>
+    <Form>
       <input
         type="text"
         onChange={({ target }) => setNameTask(target.value)}
         value={nameTask}
+        placeholder="Adicione suas tarefas..."
       />
       <button type="submit" onClick={(e) => handleAddTask(e)}>
-        Add
+        +
       </button>
-    </form>
+    </Form>
   );
 };

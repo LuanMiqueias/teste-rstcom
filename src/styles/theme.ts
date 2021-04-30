@@ -6,8 +6,8 @@ export const theme: DefaultTheme = {
     title_secondary: "#dbdbdb",
     white: "#FAFAFA",
     button: {
-      default: "#071AC8",
-      hover: "#000e8f",
+      default: "#2f85f5",
+      hover: "#1d5caf",
       logout: "#d6423d",
       logout_hover: "#b32520",
     },
