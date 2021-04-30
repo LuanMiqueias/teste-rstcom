@@ -4,7 +4,10 @@ export const theme: DefaultTheme = {
   colors: {
     title: "#303030",
     white: "#FAFAFA",
-    button: "#071AC8",
+    button: {
+      default: "#071AC8",
+      hover: "#000e8f",
+    },
   },
   font: {
     family: {

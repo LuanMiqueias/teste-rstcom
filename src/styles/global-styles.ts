@@ -12,7 +12,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   body{
     font-family: ${({ theme }) => theme.font.family.default};
-    font-weight:300
+    font-weight:300;
+    overflow-x:hidden;
   }
   button{
     font-family: ${({ theme }) => theme.font.family.default};
