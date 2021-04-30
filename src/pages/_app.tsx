@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <NavBar />
       <Component {...pageProps} />
       <GlobalStyles />
     </ThemeProvider>
