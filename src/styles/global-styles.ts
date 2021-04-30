@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
-
   *{
     margin:0;
     padding:0;
@@ -11,9 +9,22 @@ export const GlobalStyles = createGlobalStyle`
   a {
   color: inherit;
   text-decoration: none;
-}
-body{
-  font-family: ${({ theme }) => theme.colors.title};
-  font-weight:200
-}
+  }
+  body{
+    font-family: ${({ theme }) => theme.font.family.default};
+    font-weight:300
+  }
+  button{
+    font-family: ${({ theme }) => theme.font.family.default};
+  }
+  @media (max-width: 992px) {
+    :root{
+      font-size:90%
+    }
+  }
+  @media (max-width: 512px) {
+    :root{
+      font-size:82%
+    }
+  }
 `;
