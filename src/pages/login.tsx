@@ -17,9 +17,11 @@ import {
   InputBackground,
   Icon,
 } from "../styles/components/styles-form";
+import UserAuth from "../auth/UserAuth";
 
 export default function Login() {
   const router = useRouter();
+  const { user, loadData } = UserAuth({ redirectIfFound: "/", redirectTo: "" });
   return (
     <Box>
       <ImageBox>
@@ -32,7 +34,9 @@ export default function Login() {
           password: Yup.string().min(6).required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
+          localStorage.user_test = JSON.stringify({ ...values });
           router.push("/");
+          loadData();
         }}
       >
         {(formik) => {

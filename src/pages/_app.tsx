@@ -1,5 +1,9 @@
 import Head from "next/head";
+import React from "react";
+
 import { ThemeProvider } from "styled-components";
+import UserAuth from "../auth/UserAuth";
+import { NavBar } from "../components/navbar";
 import { GlobalStyles } from "../styles/global-styles";
 import { theme } from "../styles/theme";
 
@@ -13,6 +17,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
+      <NavBar />
       <Component {...pageProps} />
       <GlobalStyles />
     </ThemeProvider>
