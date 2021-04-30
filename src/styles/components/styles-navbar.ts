@@ -9,7 +9,7 @@ export const Box = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
   gap: 32px;
 `;
 
@@ -21,8 +21,9 @@ export const LogoToHome = styled.span`
   }
 `;
 export const Header = styled.header`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 24px;
   align-items: center;
   position: relative;
@@ -86,4 +87,8 @@ export const LinkNav = styled.a<ILinkProps>`
       : css`
           color: ${props.theme.colors.nav.link};
         `}
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 `;

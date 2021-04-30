@@ -3,6 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import styled, { css, keyframes } from "styled-components";
 
+export const ContainerForm = styled.div`
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  ${({ theme }) => css`
+    background-color: ${theme.colors.white};
+  `}
+`;
 export const Form = styled.form`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};

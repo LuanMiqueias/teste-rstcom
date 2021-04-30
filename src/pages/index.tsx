@@ -3,7 +3,7 @@ import UserAuth from "../auth/UserAuth";
 import { NavBar } from "../components/navbar";
 
 import { Box } from "../styles/components/styles-box";
-import { FormPersonalData } from "../styles/pages/styles-home";
+import { ContainerForm } from "../styles/pages/styles-home";
 
 export default function Home() {
   UserAuth({ redirectTo: "/login" });
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Box>
       <NavBar />
-      <FormPersonalData></FormPersonalData>
+      <ContainerForm></ContainerForm>
     </Box>
   );
 }
