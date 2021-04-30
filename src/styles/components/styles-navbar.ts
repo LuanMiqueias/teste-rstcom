@@ -4,7 +4,7 @@ import styled, { css, StyledFunction } from "styled-components";
 
 export const Box = styled.div`
   height: 100%;
-  width: 450px;
+  width: 400px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
