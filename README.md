@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="www.[seu-projeto]">Visualizar projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://teste-rstcom.vercel.app/">Visualizar projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#para-rodar-o-projeto">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -9,7 +9,7 @@
 
 ## 
 
-<img src="https://luanmiqueias.com.br/img-github/default.svg" alt="" width="100%"/>
+<img src="https://luanmiqueias.com.br/img-github/todo/todo.svg" alt="" width="100%"/>
 
 
 ## Tecnologias 
@@ -20,6 +20,7 @@ Nesse projeto ultilizei
 
 ## Sobre
 Um organizador de tarefas feito com NextJS e Typescript.
+<a href="https://teste-rstcom.vercel.app/">Visualizar projeto ></a>
 
 ## Principais funcionalidades da aplicação:
 - [x] Adicionar / Remover / completar tarefas.
