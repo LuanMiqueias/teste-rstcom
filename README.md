@@ -20,7 +20,9 @@ Nesse projeto ultilizei
 
 ## Sobre
 Um organizador de tarefas feito com NextJS e Typescript.
-<a href="https://teste-rstcom.vercel.app/">Visualizar projeto ></a>
+
+
+<a href="https://teste-rstcom.vercel.app/"> Visualizar projeto ></a>
 
 ## Principais funcionalidades da aplicação:
 - [x] Adicionar / Remover / completar tarefas.
