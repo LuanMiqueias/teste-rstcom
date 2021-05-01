@@ -3,8 +3,7 @@
   <a href="https://teste-rstcom.vercel.app/">Visualizar projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#para-rodar-o-projeto">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#imagens-do-projeto">Imagens</a>
+  <a href="#para-rodar-o-projeto">Como executar</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 ## 
