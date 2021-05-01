@@ -10,7 +10,3 @@ export const LayoutUser = ({ children }) => {
     </Container>
   );
 };
-
-export const Layout = ({ children }) => {
-  return <Container>{children}</Container>;
-};

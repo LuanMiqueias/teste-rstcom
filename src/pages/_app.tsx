@@ -7,7 +7,8 @@ import { GlobalStyles, Container } from "../styles/global-styles";
 import { theme } from "../styles/theme";
 
 function MyApp({ Component, pageProps }) {
-  const Layout = Component.layout || (({ children }) => children);
+  const Layout =
+    Component.layout || (({ children }) => <Container>{children}</Container>);
 
   const getLayout =
     Component.getLayout || ((page) => <Layout children={page} />);
