@@ -6,38 +6,41 @@ import styled, { css, keyframes } from "styled-components";
 export const ContainerForm = styled.div`
   width: 100%;
   height: 100vh;
+  max-width: 500px;
+
   align-items: flex-start;
   justify-content: flex-start;
+  z-index: 10;
+
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
   `}
+  @media (max-width: 768px) {
+    max-width: 100%;
+    justify-content: center;
+  }
 `;
 export const Form = styled.form`
   ${({ theme }) => css`
-    background-color: ${theme.colors.white};
-    width: 100%;
     max-width: 500px;
     min-height: 100vh;
-    padding: 1rem 2.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
     opacity: 0;
-    transform: translateX(50%);
-    animation: ${show} 0.2s forwards;
+    animation: ${show} 0.3s forwards;
+    padding: 1rem 2.75rem;
   `};
   @media (max-width: 768px) {
-    max-width: 100%;
-    padding: 1rem 1.5rem;
+    margin: 0 auto;
     align-items: flex-start;
-    padding-top: 64px;
+    padding: 1rem 1.5rem;
+    padding-top: 92px;
   }
 `;
 
 const show = keyframes`
   to {
-    transform: initial;
     opacity: initial
   }
 `;

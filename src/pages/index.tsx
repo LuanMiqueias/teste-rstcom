@@ -15,9 +15,11 @@ import {
   P,
   InputBackground,
   Icon,
+  ContainerForm,
 } from "../styles/components/styles-form";
 import { UserContext } from "../context/UserContext";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Login() {
   const router = useRouter();
@@ -26,11 +28,14 @@ export default function Login() {
     redirectIfFound("/todo-list");
   }, []);
   return (
-    !isAuth && (
-      <Box>
-        <ImageBox>
-          <img src="/logo-rstcom.png" alt="" width="100%" />
-        </ImageBox>
+    <Box>
+      <Head>
+        <title>Login</title>
+      </Head>
+      <ImageBox>
+        <img src="/logo-rstcom.png" alt="" width="100%" />
+      </ImageBox>
+      <ContainerForm>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={Yup.object({
@@ -115,7 +120,7 @@ export default function Login() {
             );
           }}
         </Formik>
-      </Box>
-    )
+      </ContainerForm>
+    </Box>
   );
 }

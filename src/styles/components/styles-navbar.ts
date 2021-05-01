@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { type } from "node:os";
-import styled, { css, StyledFunction } from "styled-components";
+import styled, { css, keyframes, StyledFunction } from "styled-components";
 
-export const Box = styled.div`
+interface IPropsNav {
+  show: boolean;
+}
+export const Box = styled.div<IPropsNav>`
   height: 100%;
   width: 400px;
   display: flex;
@@ -11,8 +14,81 @@ export const Box = styled.div`
   flex-direction: column;
   padding: 2rem 1.5rem;
   gap: 32px;
+
+  @media (max-width: 768px) {
+    & {
+      width: 100%;
+      max-width: 300px;
+      transform: translateX(-100%);
+      position: absolute;
+      padding: 64px 1.5rem 2rem;
+
+      z-index: 1000;
+      background: #303030;
+      transition: all 0.3s ease;
+      background: url("/bg.png") center left / cover;
+      opacity: 0;
+      ${(props) =>
+        props.show &&
+        css`
+          transform: translateX(0);
+          opacity: 1;
+        `};
+    }
+  }
+`;
+const showBackground = keyframes`
+to{
+  opacity: 1;
+}
+`;
+export const Background = styled.div`
+  opacity: 0;
+  z-index: -10;
+  @media (max-width: 768px) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    animation: ${showBackground} 0.3s forwards;
+  }
 `;
 
+export const OpenNav = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    border-radius: 10px;
+    background: #0f69b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+`;
+
+export const CloseNav = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    border-radius: 10px;
+    background: #0f69b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+`;
 export const LogoToHome = styled.span`
   width: 64px;
   & img {
@@ -33,19 +109,26 @@ export const Header = styled.header`
 
 export const Logout = styled.span`
   ${({ theme }) => css`
-    position: absolute;
-    right: 0;
-    top: -8px;
     background: ${theme.colors.button.logout};
-    padding: 8px 1.25rem;
+    width: 6rem;
+    margin-top: 8px;
+    text-align: center;
+    padding: 8px 0;
     border-radius: 24px;
     font-size: 0.75rem;
+    font-weight: 500;
     line-height: 100%;
     color: #fff;
     cursor: pointer;
 
     &:hover {
       background: ${theme.colors.button.logout_hover};
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      padding: 12px 0;
+      width: 6rem;
     }
   `}
 `;
@@ -78,11 +161,12 @@ interface ILinkProps {
   isActive: boolean;
 }
 export const LinkNav = styled.a<ILinkProps>`
+  font-size: 1rem;
   ${(props) =>
     props.isActive
       ? css`
           color: ${props.theme.colors.nav.link_active};
-          font-weight: 500;
+          font-weight: 600;
         `
       : css`
           color: ${props.theme.colors.nav.link};
@@ -90,5 +174,8 @@ export const LinkNav = styled.a<ILinkProps>`
   cursor: pointer;
   &:hover {
     opacity: 0.8;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.35rem;
   }
 `;

@@ -17,10 +17,14 @@ import {
 } from "../styles/components/styles-form";
 import { UserContext } from "../context/UserContext";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function account() {
   return (
     <ContainerForm>
+      <Head>
+        <title>Minha conta</title>
+      </Head>
       <Formik
         initialValues={{
           name: "",

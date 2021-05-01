@@ -28,7 +28,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [isAuth, setIsAuth] = React.useState(false);
 
   const loadData = React.useCallback(() => {
-    const storage = JSON.parse(localStorage.user_test);
+    const storage =
+      localStorage.user_test && JSON.parse(localStorage.user_test);
     if (!storage) return;
 
     if (storage.user) {
@@ -45,9 +46,11 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   }, []);
 
   function logout() {
+    setIsAuth(false);
     const confirmLogout = confirm("Deseja realmente sair?");
     if (!confirmLogout) return;
-    const storage = JSON.parse(localStorage.user_test);
+    const storage =
+      localStorage.user_test && JSON.parse(localStorage.user_test);
     if (storage) {
       storage.user = null;
       localStorage.user_test = JSON.stringify(storage);

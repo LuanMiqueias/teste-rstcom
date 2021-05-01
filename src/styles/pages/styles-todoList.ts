@@ -2,7 +2,6 @@ import styled, { css, keyframes } from "styled-components";
 
 const show = keyframes`
   to {
-    transform: initial;
     opacity: initial
   }
 `;
@@ -13,15 +12,22 @@ export const ContainerForm = styled.div`
   min-height: 100vh;
   align-items: flex-start;
   justify-content: flex-start;
-
-  animation: ${show} 0.3s forwards;
-  opacity: 0;
-  transform: translate(50%);
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
   `}
+  @media (max-width: 768px) {
+    padding-top: 32px;
+  }
 `;
 export const TodoList = styled.div`
   padding: 4rem;
   max-width: 500px;
+
+  opacity: 0;
+  animation: ${show} 0.3s forwards;
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    padding: 4rem 1.5rem;
+  }
 `;

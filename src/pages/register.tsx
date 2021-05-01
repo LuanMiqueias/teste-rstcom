@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "Yup";
-import Image from "next/image";
 
 import { Box, ImageBox } from "../styles/components/styles-box";
 import {
@@ -14,23 +13,28 @@ import {
   P,
   InputBackground,
   Icon,
+  ContainerForm,
 } from "../styles/components/styles-form";
 import { useRouter } from "next/router";
 import { UserContext } from "../context/UserContext";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Register() {
   const router = useRouter();
-  const { isAuth, login, redirectIfFound } = React.useContext(UserContext);
+  const { login, redirectIfFound } = React.useContext(UserContext);
   React.useEffect(() => {
     redirectIfFound("/todo-list");
   }, []);
   return (
-    !isAuth && (
-      <Box>
-        <ImageBox>
-          <img src="/logo-rstcom.png" alt="" width="100%" />
-        </ImageBox>
+    <Box>
+      <Head>
+        <title>Cadastrar-se</title>
+      </Head>
+      <ImageBox>
+        <img src="/logo-rstcom.png" alt="" width="100%" />
+      </ImageBox>
+      <ContainerForm>
         <Formik
           initialValues={{
             name: "",
@@ -170,7 +174,7 @@ export default function Register() {
             );
           }}
         </Formik>
-      </Box>
-    )
+      </ContainerForm>
+    </Box>
   );
 }

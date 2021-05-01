@@ -8,6 +8,9 @@ export const TaskListContainer = styled.div`
   gap: 8px;
   margin-top: 24px;
   height: 45px;
+  @media (max-width: 768px) {
+    height: 74px;
+  }
 `;
 
 interface ITaskProps {
@@ -15,23 +18,18 @@ interface ITaskProps {
   wasExcluded: boolean;
 }
 const show = keyframes`
-from{
-  transform: translate(-25%);
-    opacity: 0;
+50%{
+  transform: scale(0.95);
 }
-  50%{
-  transform: translate(15px);
+0%,70%{
+  transform: initial;
 }
-  to {
-    transform: translate(0);
-    opacity: 1;
-  }
 `;
 
 export const TaskContainer = styled.div<ITaskProps>`
   flex: 1;
   width: 100%;
-  height: 45px;
+  height: 100%;
   border-radius: 5px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   font-size: 0.88rem;
@@ -41,7 +39,8 @@ export const TaskContainer = styled.div<ITaskProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  animation: ${show} 0.4s forwards;
+  animation: ${show} 0.3s forwards;
+
   &:hover {
     color: #353535;
     transform: scale(1.02);
@@ -53,8 +52,12 @@ export const TaskContainer = styled.div<ITaskProps>`
     transform: translateY(0);
   }
   > label {
-    height: 100%;
+    height: 45px;
     padding: 0.5rem 1.5rem;
+    @media (max-width: 768px) {
+      height: 74px;
+      font-size: 1rem;
+    }
   }
   > img {
     height: 20px;
@@ -62,11 +65,16 @@ export const TaskContainer = styled.div<ITaskProps>`
     opacity: 0;
     transition: all 0.2s;
     transform: translateY(25%);
-    margin-right: 1.5rem;
+    margin-right: 2rem;
     &:hover {
       transition: all 0.1s;
       transform: scale(1.2);
       opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+      opacity: 0.3;
+      transform: initial;
+      height: 28px;
     }
   }
 
@@ -80,7 +88,7 @@ export const TaskContainer = styled.div<ITaskProps>`
     props.isCompleted &&
     !props.wasExcluded &&
     css`
-      animation: ${completed} 0.6s ease;
+      animation: ${completed} 0.6s linear forwards;
       border: 1px solid #2acca9;
       color: #2acca9;
       text-decoration: line-through;
@@ -106,10 +114,10 @@ const completed = keyframes`
   transform: scale(1.05);
 }
 0%,50%{
-  transform: scale(0.90);
+  transform: scale(0.95);
 }
 75%,100%{
-  transform: scale(1);
+  transform: initial;
 }
 
 `;
