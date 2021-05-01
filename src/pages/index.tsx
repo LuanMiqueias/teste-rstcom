@@ -46,7 +46,7 @@ export default function Login() {
               .min(6, "Minimo 6 caracteres")
               .required("Digite a senha"),
           })}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values) => {
             if (!localStorage.user_test) {
               localStorage.user_test = JSON.stringify({ user: values });
             }
@@ -66,9 +66,7 @@ export default function Login() {
                     Email
                     <InputBackground
                       Invalid={
-                        formik.touched.password &&
-                        formik.errors.password &&
-                        true
+                        formik.touched.email && formik.errors.email && true
                       }
                     >
                       <Input
