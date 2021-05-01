@@ -37,6 +37,8 @@ export const TodoListProvider = ({ children }: ITodoListProviderProps) => {
       const storage = JSON.parse(localStorage.user_test);
       storage.tasks = tasks;
       localStorage.user_test = JSON.stringify(storage);
+    } else {
+      localStorage.user_test = JSON.stringify({ tasks });
     }
   }
 

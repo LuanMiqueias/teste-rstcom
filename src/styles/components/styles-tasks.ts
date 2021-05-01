@@ -1,13 +1,14 @@
 import styled, { css, keyframes } from "styled-components";
 
 export const TaskListContainer = styled.div`
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
   gap: 8px;
   margin-top: 24px;
-  height: 45px;
   @media (max-width: 768px) {
     height: 74px;
   }

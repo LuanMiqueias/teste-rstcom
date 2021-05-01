@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 import { useRouter } from "next/router";
 
 import { Box, ImageBox } from "../styles/components/styles-box";

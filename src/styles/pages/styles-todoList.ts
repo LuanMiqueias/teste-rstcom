@@ -22,9 +22,8 @@ export const ContainerForm = styled.div`
 export const TodoList = styled.div`
   padding: 4rem;
   max-width: 500px;
-
-  opacity: 0;
   animation: ${show} 0.3s forwards;
+  opacity: 0;
   @media (max-width: 768px) {
     width: 100%;
     max-width: 100%;

@@ -34,5 +34,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   min-height: 100vh;
+  height: 100%;
   background: url("/bg.png") no-repeat center center / cover;
+  background-attachment: fixed;
 `;

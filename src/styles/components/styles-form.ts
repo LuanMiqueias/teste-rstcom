@@ -4,9 +4,9 @@ import Link from "next/link";
 import styled, { css, keyframes } from "styled-components";
 
 export const ContainerForm = styled.div`
-  width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 500px;
+  width: 100%;
 
   align-items: flex-start;
   justify-content: flex-start;
@@ -22,6 +22,7 @@ export const ContainerForm = styled.div`
 `;
 export const Form = styled.form`
   ${({ theme }) => css`
+    width: 100%;
     max-width: 500px;
     min-height: 100vh;
     display: flex;

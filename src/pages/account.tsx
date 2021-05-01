@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Formik } from "formik";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 
 import { ContainerForm, Wrapper } from "../styles/pages/styles-account";
 import {
