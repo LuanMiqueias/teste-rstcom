@@ -5,14 +5,18 @@ interface IUserProviderProps {
   children: React.ReactNode;
 }
 
+interface PropsData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 interface IPropsContext {
-  data: {
-    name: string;
-    email?: string;
-  };
+  data: PropsData;
   isAuth: boolean;
   logout: () => void;
   login: () => void;
+  loadData: () => void;
   redirectIfFound: (url: string) => void;
 }
 
@@ -20,20 +24,20 @@ export const UserContext = React.createContext({} as IPropsContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const router = useRouter();
-  const [data, setData] = React.useState(null);
+  const [data, setData] = React.useState({} as PropsData);
   const [isAuth, setIsAuth] = React.useState(false);
 
   const loadData = React.useCallback(() => {
     const storage = JSON.parse(localStorage.user_test);
+    if (!storage) return;
+
     if (storage.user) {
       setData(storage.user);
       setIsAuth(true);
     } else {
       setIsAuth(false);
       setData(null);
-      router.push("/");
     }
-    return data;
   }, []);
 
   React.useEffect(() => {
@@ -61,7 +65,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   }
   return (
     <UserContext.Provider
-      value={{ data, isAuth, logout, login, redirectIfFound }}
+      value={{ data, isAuth, logout, login, redirectIfFound, loadData }}
     >
       {children}
     </UserContext.Provider>

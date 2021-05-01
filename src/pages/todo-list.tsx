@@ -2,10 +2,12 @@ import React from "react";
 import { NavBar } from "../components/navbar";
 
 import { Box } from "../styles/components/styles-box";
-import { ContainerForm, TodoList } from "../styles/pages/styles-home";
+import { ContainerForm, TodoList } from "../styles/pages/styles-todoList";
 import { AddTask } from "../components/addTask";
 import { TaskList } from "../components/taskList";
 import { TodoListProvider } from "../context/TodoListContext";
+import { UserContext } from "../context/UserContext";
+import { useRouter } from "next/router";
 
 interface IPropsTasks {
   name: string;

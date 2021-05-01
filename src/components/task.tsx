@@ -1,6 +1,6 @@
 import React from "react";
 import { TodoListContext } from "../context/TodoListContext";
-import { TaskContainer, Label } from "../styles/components/styles-todoList";
+import { TaskContainer, Label } from "../styles/components/styles-tasks";
 
 interface IPropsTask {
   name: string;

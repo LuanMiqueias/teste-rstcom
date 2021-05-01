@@ -12,12 +12,12 @@ import {
   Label,
   WrapperForm,
   ErrorInput,
-  LinkForm,
   P,
   InputBackground,
   Icon,
 } from "../styles/components/styles-form";
 import { UserContext } from "../context/UserContext";
+import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
@@ -26,76 +26,96 @@ export default function Login() {
     redirectIfFound("/todo-list");
   }, []);
   return (
-    <Box>
-      <ImageBox>
-        <img src="/logo-rstcom.png" alt="" width="100%" />
-      </ImageBox>
-      <Formik
-        initialValues={{ name: "", password: "" }}
-        validationSchema={Yup.object({
-          name: Yup.string().required("Required"),
-          password: Yup.string().min(6).required("Required"),
-        })}
-        onSubmit={(values, { setSubmitting }) => {
-          if (!localStorage.user_test) {
-            localStorage.user_test = JSON.stringify({ user: values });
-          }
-          const storage = JSON.parse(localStorage.user_test);
-          storage.user = values;
-          localStorage.user_test = JSON.stringify(storage);
-          router.push("/todo-list");
-          login();
-        }}
-      >
-        {(formik) => {
-          return (
-            <Form onSubmit={formik.handleSubmit}>
-              <WrapperForm>
-                <h1>Faça seu login</h1>
-                <Label htmlFor="name">
-                  Name
-                  <InputBackground>
-                    <Input
-                      type="text"
-                      id="name"
-                      autoComplete="name"
-                      {...formik.getFieldProps("name")}
-                    />
-                  </InputBackground>
-                  <ErrorInput>
-                    {formik.touched.name && <p>{formik.errors.name}</p>}
-                  </ErrorInput>
-                </Label>
-                <Label htmlFor="email">
-                  Senha
-                  <InputBackground>
-                    <Input
-                      id="email"
-                      type="password"
-                      autoComplete="password"
-                      {...formik.getFieldProps("password")}
-                    />
-                    <Icon
-                      src="/icons/eye-on.svg"
-                      alt="show password"
-                      height="24px"
-                      width="24px"
-                    />
-                  </InputBackground>
-                  <ErrorInput>
-                    {formik.touched.password && <p>{formik.errors.password}</p>}
-                  </ErrorInput>
-                </Label>
-                <Button type="submit">Enviar</Button>
-                <P>
-                  Não tem uma conta?
-                  <LinkForm href="/register">Crie uma!</LinkForm>
-                </P>
-              </WrapperForm>
-            </Form>
-          );
-        }}
-      </Formik>
-    </Box>
+    !isAuth && (
+      <Box>
+        <ImageBox>
+          <img src="/logo-rstcom.png" alt="" width="100%" />
+        </ImageBox>
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={Yup.object({
+            email: Yup.string()
+              .email("Digite um email invalido")
+              .required("Digite seu email"),
+            password: Yup.string()
+              .min(6, "Minimo 6 caracteres")
+              .required("Digite a senha"),
+          })}
+          onSubmit={(values, { setSubmitting }) => {
+            if (!localStorage.user_test) {
+              localStorage.user_test = JSON.stringify({ user: values });
+            }
+            const storage = JSON.parse(localStorage.user_test);
+            storage.user = values;
+            localStorage.user_test = JSON.stringify(storage);
+            router.push("/todo-list");
+            login();
+          }}
+        >
+          {(formik) => {
+            return (
+              <Form onSubmit={formik.handleSubmit}>
+                <WrapperForm>
+                  <h1>Faça seu login</h1>
+                  <Label htmlFor="email">
+                    Email
+                    <InputBackground
+                      Invalid={
+                        formik.touched.password &&
+                        formik.errors.password &&
+                        true
+                      }
+                    >
+                      <Input
+                        type="text"
+                        id="email"
+                        autoComplete="email"
+                        {...formik.getFieldProps("email")}
+                      />
+                    </InputBackground>
+                    <ErrorInput>
+                      {formik.touched.email && <p>{formik.errors.email}</p>}
+                    </ErrorInput>
+                  </Label>
+                  <Label htmlFor="password">
+                    Senha
+                    <InputBackground
+                      Invalid={
+                        formik.touched.password &&
+                        formik.errors.password &&
+                        true
+                      }
+                    >
+                      <Input
+                        id="password"
+                        type="password"
+                        autoComplete="password"
+                        {...formik.getFieldProps("password")}
+                      />
+                      <Icon
+                        src="/icons/eye-on.svg"
+                        alt="show password"
+                        height="24px"
+                        width="24px"
+                      />
+                    </InputBackground>
+                    <ErrorInput>
+                      {formik.touched.password && (
+                        <p>{formik.errors.password}</p>
+                      )}
+                    </ErrorInput>
+                  </Label>
+                  <Button type="submit">Enviar</Button>
+                  <P>
+                    Não tem uma conta?
+                    <Link href="/register">Crie uma!</Link>
+                  </P>
+                </WrapperForm>
+              </Form>
+            );
+          }}
+        </Formik>
+      </Box>
+    )
   );
 }

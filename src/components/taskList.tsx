@@ -1,7 +1,7 @@
 import React from "react";
 import { Task } from "./task";
 
-import { TaskListContainer } from "../styles/components/styles-todoList";
+import { TaskListContainer } from "../styles/components/styles-tasks";
 import { TodoListContext } from "../context/TodoListContext";
 interface IPropsTasks {
   tasks: { name: string; completed: boolean; id: string }[];

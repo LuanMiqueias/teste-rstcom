@@ -1,6 +1,6 @@
 import React from "react";
 import { TodoListContext } from "../context/TodoListContext";
-import { Form } from "../styles/components/styles-todoList";
+import { Form } from "../styles/components/styles-tasks";
 
 export const AddTask = () => {
   const [nameTask, setNameTask] = React.useState("");

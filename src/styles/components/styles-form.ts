@@ -55,8 +55,10 @@ export const Label = styled.label`
   font-size: 0.88rem;
   color: 1px solid #606060;
 `;
-
-export const InputBackground = styled.div`
+interface IFieldsProps {
+  Invalid?: boolean;
+}
+export const InputBackground = styled.div<IFieldsProps>`
   height: 45px;
   border: 1px solid #c4c4c4;
   background: #f5f5f5;
@@ -64,6 +66,12 @@ export const InputBackground = styled.div`
   margin-top: 2px;
   display: flex;
   padding-right: 1rem;
+
+  ${(props) =>
+    props.Invalid &&
+    css`
+      border: 1px solid #e05353;
+    `}
 
   &:focus-within {
     box-shadow: inset 0px -2px 0px #131399;
@@ -131,8 +139,7 @@ export const Button = styled.button`
   color: #fff;
   font-size: 0.88rem;
   transition: all 0.1s;
-
-  &:hover {
+  Invalid &:hover {
     transition: all 0.2s;
     background: ${({ theme }) =>
       css`
@@ -149,4 +156,3 @@ export const P = styled.p`
     font-weight: 400;
   }
 `;
-export const LinkForm = styled(Link)``;

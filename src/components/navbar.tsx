@@ -16,9 +16,10 @@ import {
 export const NavBar = () => {
   const { data, isAuth, logout } = React.useContext(UserContext);
 
-  const router = useRouter();
+  const routes = useRouter();
 
-  if (!isAuth) return <></>;
+  if (!isAuth && routes.asPath !== "/account" && routes.asPath !== "/todo-list")
+    return <Box></Box>;
   return (
     <Box>
       <Header>
@@ -34,18 +35,18 @@ export const NavBar = () => {
         </Link>
         <Logout onClick={() => logout()}>Sair</Logout>
         <InfoUser>
-          <h2>{data.name}</h2>
+          <h2>{data?.name || "nome usuario"}</h2>
           <h3>{data?.email || "email@dominior.com.br"}</h3>
         </InfoUser>
       </Header>
       <Nav>
         <Link href="/account">
-          <LinkNav isActive={router.asPath === "/account"}>
+          <LinkNav isActive={routes.asPath === "/account"}>
             Dados Pessoais
           </LinkNav>
         </Link>
         <Link href="/todo-list">
-          <LinkNav isActive={router.asPath === "/todo-list"}>Todo List</LinkNav>
+          <LinkNav isActive={routes.asPath === "/todo-list"}>Todo List</LinkNav>
         </Link>
       </Nav>
     </Box>
