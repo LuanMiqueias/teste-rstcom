@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { UserContext } from "../context/UserContext";
 import {
   Box,
   LogoToHome,
@@ -17,12 +16,9 @@ import {
 } from "../styles/components/styles-navbar";
 
 export const NavBar = () => {
-  const { data, isAuth, logout } = React.useContext(UserContext);
   const [showNav, setShowNav] = React.useState(false);
   const routes = useRouter();
 
-  if (!isAuth && routes.asPath !== "/account" && routes.asPath !== "/todo-list")
-    return <></>;
   return (
     <>
       {showNav && (
@@ -48,23 +44,23 @@ export const NavBar = () => {
             </LogoToHome>
           </Link>
           <InfoUser>
-            <h2>{data?.name || "nome usuario"}</h2>
-            <h3>{data?.email || "email@dominior.com.br"}</h3>
-            <Logout onClick={() => logout()}>Sair</Logout>
+            <h2>{"nome usuario"}</h2>
+            <h3>{"email@dominior.com.br"}</h3>
+            <Logout onClick={() => routes.push("/")}>Sair</Logout>
           </InfoUser>
         </Header>
         <Nav>
-          <Link href="/account">
+          <Link href="/user/account">
             <LinkNav
-              isActive={routes.asPath === "/account"}
+              isActive={routes.asPath === "/user/account"}
               onClick={() => setShowNav(false)}
             >
               Dados Pessoais
             </LinkNav>
           </Link>
-          <Link href="/todo-list">
+          <Link href="/user/">
             <LinkNav
-              isActive={routes.asPath === "/todo-list"}
+              isActive={routes.asPath === "/user"}
               onClick={() => setShowNav(false)}
             >
               Todo List

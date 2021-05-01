@@ -2,13 +2,16 @@ import Head from "next/head";
 import React from "react";
 
 import { ThemeProvider } from "styled-components";
-import { NavBar } from "../components/navbar";
 import { TodoListProvider } from "../context/TodoListContext";
-import { UserProvider } from "../context/UserContext";
 import { GlobalStyles, Container } from "../styles/global-styles";
 import { theme } from "../styles/theme";
 
 function MyApp({ Component, pageProps }) {
+  const Layout = Component.layout || (({ children }) => children);
+
+  const getLayout =
+    Component.getLayout || ((page) => <Layout children={page} />);
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -20,14 +23,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#003561" />
       </Head>
-      <UserProvider>
-        <TodoListProvider>
-          <Container>
-            <NavBar />
-            <Component {...pageProps} />
-          </Container>
-        </TodoListProvider>
-      </UserProvider>
+
+      <TodoListProvider>
+        <Container>{getLayout(<Component {...pageProps} />)}</Container>
+      </TodoListProvider>
       <GlobalStyles />
     </ThemeProvider>
   );

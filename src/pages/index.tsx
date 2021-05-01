@@ -17,16 +17,12 @@ import {
   Icon,
   ContainerForm,
 } from "../styles/components/styles-form";
-import { UserContext } from "../context/UserContext";
 import Link from "next/link";
 import Head from "next/head";
 
 export default function Login() {
   const router = useRouter();
-  const { isAuth, login, redirectIfFound } = React.useContext(UserContext);
-  React.useEffect(() => {
-    redirectIfFound("/todo-list");
-  }, []);
+
   return (
     <Box>
       <Head>
@@ -41,20 +37,13 @@ export default function Login() {
           validationSchema={Yup.object({
             email: Yup.string()
               .email("Digite um email invalido")
-              .required("Digite seu email"),
+              .required("Digite um email qualquer"),
             password: Yup.string()
               .min(6, "Minimo 6 caracteres")
-              .required("Digite a senha"),
+              .required("Digite um senha qualquer"),
           })}
           onSubmit={(values) => {
-            if (!localStorage.user_test) {
-              localStorage.user_test = JSON.stringify({ user: values });
-            }
-            const storage = JSON.parse(localStorage.user_test);
-            storage.user = values;
-            localStorage.user_test = JSON.stringify(storage);
-            router.push("/todo-list");
-            login();
+            router.push("user/");
           }}
         >
           {(formik) => {

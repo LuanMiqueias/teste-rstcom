@@ -162,11 +162,11 @@ interface ILinkProps {
 }
 export const LinkNav = styled.a<ILinkProps>`
   font-size: 1rem;
+  font-weight: 500;
   ${(props) =>
     props.isActive
       ? css`
           color: ${props.theme.colors.nav.link_active};
-          font-weight: 600;
         `
       : css`
           color: ${props.theme.colors.nav.link};

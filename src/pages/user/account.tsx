@@ -3,7 +3,7 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import { ContainerForm, Wrapper } from "../styles/pages/styles-account";
+import { ContainerForm, Wrapper } from "../../styles/pages/styles-account";
 import {
   Button,
   Form,
@@ -14,12 +14,11 @@ import {
   InputBackground,
   Icon,
   WrapperForm,
-} from "../styles/components/styles-form";
-import { UserContext } from "../context/UserContext";
-import { useRouter } from "next/router";
+} from "../../styles/components/styles-form";
 import Head from "next/head";
+import { LayoutUser } from "../../components/layout";
 
-export default function account() {
+function Account() {
   return (
     <ContainerForm>
       <Head>
@@ -44,13 +43,7 @@ export default function account() {
             .required("Digite novamente sua senha"),
         })}
         onSubmit={(values) => {
-          if (!localStorage.user_test) {
-            localStorage.user_test = JSON.stringify({ user: values });
-          }
-          const storage = JSON.parse(localStorage.user_test);
-          storage.user = values;
-
-          localStorage.user_test = JSON.stringify(storage);
+          console.log("salvar dados aqui");
         }}
       >
         {(formik) => {
@@ -155,3 +148,5 @@ export default function account() {
     </ContainerForm>
   );
 }
+Account.getLayout = (page) => <LayoutUser>{page}</LayoutUser>;
+export default Account;
