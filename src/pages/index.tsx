@@ -42,8 +42,8 @@ export default function Login() {
               .min(6, "Minimo 6 caracteres")
               .required("Digite um senha qualquer"),
           })}
-          onSubmit={(values) => {
-            router.push("user/");
+          onSubmit={() => {
+            router.push("/user");
           }}
         >
           {(formik) => {

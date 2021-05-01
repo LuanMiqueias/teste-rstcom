@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <TodoListProvider>
-        <Container>{getLayout(<Component {...pageProps} />)}</Container>
+        {getLayout(<Component {...pageProps} />)}
       </TodoListProvider>
       <GlobalStyles />
     </ThemeProvider>

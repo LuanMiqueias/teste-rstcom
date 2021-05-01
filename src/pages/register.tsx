@@ -51,14 +51,8 @@ export default function Register() {
                 .min(6)
                 .required("Digite novamente sua senha"),
             })}
-            onSubmit={(values, { setSubmitting }) => {
-              if (!localStorage.user_test) {
-                localStorage.user_test = JSON.stringify({ user: values });
-              }
-              const storage = JSON.parse(localStorage.user_test);
-              storage.user = values;
-              localStorage.user_test = JSON.stringify(storage);
-              router.push("/todo-list");
+            onSubmit={() => {
+              router.push("/user");
             }}
           >
             {(formik) => {
