@@ -2,7 +2,6 @@ import styled, { css, keyframes } from "styled-components";
 
 export const TaskListContainer = styled.div`
   min-height: 100vh;
-  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -28,9 +27,8 @@ const show = keyframes`
 `;
 
 export const TaskContainer = styled.div<ITaskProps>`
-  flex: 1;
   width: 100%;
-  height: 100%;
+  height: 45px;
   border-radius: 5px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   font-size: 0.88rem;
